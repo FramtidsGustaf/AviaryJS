@@ -6,6 +6,7 @@ interface Pulli {
   text?: '';
   state?: {};
   children: Egg[];
+  child: any;
   click?(): any;
 }
 

@@ -7,6 +7,7 @@ export interface Egg {
   children: Egg[];
   click?(): void;
   hatch: any;
+  child: Egg[];
 }
 
 const Lay = (name: string) => {
@@ -24,6 +25,7 @@ const Lay = (name: string) => {
     state: {},
     children: [],
     hatch: undefined,
+    child: undefined,
   };
 
   const handler = {

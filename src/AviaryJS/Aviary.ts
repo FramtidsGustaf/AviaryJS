@@ -11,8 +11,6 @@ const Aviary = (...children: any) => {
   customElements.define('aviary-app', Application, { extends: 'div' });
   const element: AppElement = document.createElement('aviary-app');
 
-  console.log(children);
-
   for (const child of children) {
     element.appendChild(child.pulli);
   }
