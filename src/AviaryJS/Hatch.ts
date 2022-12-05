@@ -3,10 +3,10 @@ import { Egg } from './Lay';
 interface Pulli {
   pulli: HTMLElement;
   name: string;
-  text?: '';
+  text?: string;
   state?: {};
-  children: Egg[];
-  child: any;
+  children?: Egg[];
+  child?: Egg;
   click?(): any;
 }
 
@@ -28,7 +28,7 @@ const Hatch = (egg: Egg) => {
     }
   }
 
-  const target = {
+  const target: Pulli = {
     pulli,
     name,
     text,
