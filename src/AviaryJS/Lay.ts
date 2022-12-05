@@ -6,8 +6,8 @@ export interface Egg {
   state?: {};
   children: Egg[];
   click?(): void;
-  hatch: any;
-  child: Egg[];
+  hatch?: any;
+  child?: Egg;
 }
 
 const Lay = (name: string) => {
@@ -19,13 +19,11 @@ const Lay = (name: string) => {
 
   customElements.define(name, Lay, { extends: 'div' });
 
-  const target = {
+  const target: Egg = {
     name,
     text: '',
     state: {},
     children: [],
-    hatch: undefined,
-    child: undefined,
   };
 
   const handler = {
