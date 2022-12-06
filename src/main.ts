@@ -1,4 +1,4 @@
-import { Aviary, Lay } from './AviaryJS';
+import Aviary, { Lay } from './AviaryJS';
 
 /**The Lay function creates a component scaffold from wich you can create separate components*/
 const GooseHawk = Lay('goose-hawk');
