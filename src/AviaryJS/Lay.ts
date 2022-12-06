@@ -8,6 +8,9 @@ export interface Egg {
   click?(): void;
   hatch?: any;
   child?: Egg;
+  classes?: string[];
+  class?: any;
+  removeClass?: any;
 }
 
 const Lay = (name: string) => {
@@ -65,6 +68,18 @@ const Lay = (name: string) => {
           case 'child':
             target.children.push(value);
             break;
+          case 'class':
+            if (!target.classes) target.classes = [];
+
+            if (Array.isArray(value)) {
+              target.classes.push(...value);
+            } else {
+              target.classes.push(value);
+            }
+            break;
+          case 'removeClass':
+            if (!target.classes) return false;
+            target.classes = target.classes.filter((c) => c !== value);
         }
       }
       return true;
