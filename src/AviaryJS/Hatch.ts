@@ -8,11 +8,20 @@ interface Pulli {
   children?: Egg[];
   child?: Egg;
   click?(): any;
+  classes?: string[];
+  class?: any;
+  removeClass?: any;
 }
 
 const Hatch = (egg: Egg) => {
-  const { name, text, click, children, state } = egg;
+  const { name, text, click, children, state, classes } = egg;
   const pulli = document.createElement(name);
+
+  if (classes) {
+    for (const c of classes) {
+      pulli.classList.add(c);
+    }
+  }
 
   if (text) {
     pulli.append(document.createTextNode(text));
@@ -71,9 +80,31 @@ const Hatch = (egg: Egg) => {
             target.text = value;
             break;
           case 'child':
-            target.children!.push(value);
+            if (target.children) {
+              target.children.push(value);
+            } else {
+              target.children = [];
+              target.children.push;
+            }
             target.pulli.appendChild(value.pulli);
             break;
+          case 'class':
+            if (!target.classes) target.classes = [];
+
+            if (Array.isArray(value)) {
+              for (const c of value) {
+                target.classes.push(c);
+                target.pulli.classList.add(c);
+              }
+            } else {
+              target.classes.push(value);
+              target.pulli.classList.add(value);
+            }
+            break;
+          case 'removeClass':
+            if (!target.classes) return false;
+            target.classes = target.classes.filter((c) => c !== value);
+            target.pulli.classList.remove(value);
         }
       }
       return true;

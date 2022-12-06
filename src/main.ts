@@ -8,14 +8,28 @@ const GooseHawk = Lay('goose-hawk');
  * However, they can all be overwritten.
  */
 GooseHawk.text = 'hejsan';
+
+/**You can set a css class to the scaffold and to any hatched component */
+GooseHawk.class = 'svejsan';
+
+/**You can also add multiple css classes at the same time with an array */
+GooseHawk.class = ['Tjabba', 'Tjena', 'Hallå'];
+
+/**To remove a class, use the removeClass attribute and simply give it the class
+ * you'd like to remove
+ */
+GooseHawk.removeClass = 'Hallå';
+
+/**
+ * To add clickevent to the scaffold just use the click attribute and
+ * pass a function
+ */
 GooseHawk.click = () => {
   console.log('KRA');
 };
 
 /**A child is set by first creating a scaffold then applying it to the child attribute of its parent
  * This can be done many times to achieve a tree structure.
- * Atm you can only apply a scaffold to the child attribute. However this will change in a near future and
- * you'll be able to apply a hatched scaffold
  */
 
 const LesserWoodpecker = Lay('lesser-woodpecker');
