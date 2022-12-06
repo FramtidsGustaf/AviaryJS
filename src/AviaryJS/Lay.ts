@@ -4,7 +4,7 @@ export interface Egg {
   name: string;
   text?: string;
   state?: {};
-  children: Egg[];
+  children?: Egg[];
   click?(): void;
   hatch?: any;
   child?: Egg;
@@ -26,7 +26,6 @@ const Lay = (name: string) => {
     name,
     text: '',
     state: {},
-    children: [],
   };
 
   const handler = {
@@ -43,6 +42,9 @@ const Lay = (name: string) => {
           break;
         case 'children':
           return target.children;
+          break;
+        case 'classes':
+          return target.classes;
           break;
         case 'hatch':
           const pulli = Hatch(target);
@@ -66,6 +68,7 @@ const Lay = (name: string) => {
             target.text = value;
             break;
           case 'child':
+            if (!target.children) target.children = [];
             target.children.push(value);
             break;
           case 'class':
