@@ -80,13 +80,18 @@ const Hatch = (egg: Egg) => {
             target.text = value;
             break;
           case 'child':
-            if (target.children) {
-              target.children.push(value);
-            } else {
-              target.children = [];
-              target.children.push;
+            if (!target.children) target.children = [];
+
+            if (Array.isArray(value)) {
+              for (const child of value) {
+                target.children.push(child);
+                if (child.hasAttribute('pulli')) {
+                  target.pulli.appendChild(child.pulli);
+                } else {
+                  target.pulli.appendChild(child.hatch.pulli);
+                }
+              }
             }
-            target.pulli.appendChild(value.pulli);
             break;
           case 'class':
             if (!target.classes) target.classes = [];

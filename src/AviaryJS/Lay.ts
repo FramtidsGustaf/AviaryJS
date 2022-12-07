@@ -6,9 +6,10 @@ export interface Egg {
   state?: {};
   children?: Egg[];
   click?(): void;
-  hatch?: any;
-  child?: Egg;
   classes?: string[];
+  // Types bellow are needed because of the handler in the proxy
+  hatch?: any;
+  child?: any;
   class?: any;
   removeClass?: any;
 }
@@ -69,7 +70,13 @@ const Lay = (name: string) => {
             break;
           case 'child':
             if (!target.children) target.children = [];
-            target.children.push(value);
+
+            if (Array.isArray(value)) {
+              target.children.push(...value);
+            } else {
+              target.children.push(value);
+            }
+
             break;
           case 'class':
             if (!target.classes) target.classes = [];
