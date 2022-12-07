@@ -64,6 +64,7 @@ const Hatch = (egg: Egg) => {
           return target.children;
           break;
         default:
+          return false;
           break;
       }
     },
