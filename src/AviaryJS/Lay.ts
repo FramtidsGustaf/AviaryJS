@@ -30,7 +30,7 @@ const Lay = (name: string) => {
   };
 
   const handler = {
-    get(target: Egg, prop: string, reciever: any) {
+    get(target: Egg, prop: string, _reciever: any) {
       switch (prop) {
         case 'name':
           return target.name;

@@ -46,7 +46,7 @@ const Hatch = (egg: Egg) => {
   };
 
   const handler = {
-    get(target: Pulli, prop: string, reciever: any) {
+    get(target: Pulli, prop: string, _reciever: any) {
       switch (prop) {
         case 'pulli':
           return target.pulli;
@@ -86,12 +86,16 @@ const Hatch = (egg: Egg) => {
             if (Array.isArray(value)) {
               for (const child of value) {
                 target.children.push(child);
-                if (child.hasAttribute('pulli')) {
-                  target.pulli.appendChild(child.pulli);
-                } else {
-                  target.pulli.appendChild(child.hatch.pulli);
-                }
+
+                target.pulli.appendChild(
+                  !!child.pulli ? child.pulli : child.hatch.pulli
+                );
               }
+            } else {
+              target.children.push(value);
+              target.pulli.appendChild(
+                !!value.pulli ? value.pulli : value.hatch.pulli
+              );
             }
             break;
           case 'class':

@@ -42,6 +42,10 @@ GooseHawk.child = [Lay('herring-gull'), Lay('corvus-corax')];
  */
 const gooseHawk = GooseHawk.hatch;
 
+/* You can also add a child to a hatched scaffold
+ */
+gooseHawk.child = Lay('barn-owl');
+
 /*Aviary is the app and is called with the outermost components as props. It is perfectly possible to pass more than
  * one component as props and they will be rendered in the same order as they're passed in the Aviary function
  */
