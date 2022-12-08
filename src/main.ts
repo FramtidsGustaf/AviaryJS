@@ -1,6 +1,6 @@
 import Aviary, { Lay } from './AviaryJS';
 
-/*The Lay function creates a component scaffold from wich you can create separate components*/
+/*The Lay function creates a component scaffold from which you can create separate components*/
 const GooseHawk = Lay('goose-hawk');
 
 /*If attributes are set to the scaffold, all components that are made from it will get the attributes.
