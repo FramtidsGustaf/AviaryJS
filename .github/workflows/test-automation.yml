@@ -1,6 +1,6 @@
 name: automated-testing-with-vitest
 run-name: ${{ github.actor }} has started a job
-on: [push]
+on: [pull_request]
 jobs:
   automated-test:
     runs-on: ubuntu-latest
