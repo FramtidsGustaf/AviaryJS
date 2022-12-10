@@ -1,6 +1,6 @@
 name: automated-testing-with-vitest
 run-name: ${{ github.actor }} has started a job
-on: [push]
+on: [pull_request]
 jobs:
   automated-test:
     runs-on: ubuntu-latest
@@ -9,5 +9,5 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: '18'
-      - run: npm i
+      - run: npm iF
       - run: npm test
